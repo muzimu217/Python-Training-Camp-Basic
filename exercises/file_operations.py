@@ -19,7 +19,17 @@ def read_file(file_path):
     """
     # 请在下方编写代码
     # 使用open()函数打开文件并读取内容
-    pass
+    try:
+        # 以只读模式打开文件，使用 UTF-8 编码
+        with open(file_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+        return content
+    except FileNotFoundError:
+        # 文件未找到时返回空字符串
+        return ""
+    except Exception:
+        # 其他异常时返回空字符串
+        return ""
 
 def write_file(file_path, content):
     """
@@ -34,4 +44,11 @@ def write_file(file_path, content):
     """
     # 请在下方编写代码
     # 使用with语句和open()函数写入内容到文件
-    pass 
+    try:
+        # 以写入模式打开文件，使用 UTF-8 编码
+        with open(file_path, 'w', encoding='utf-8') as file:
+            file.write(content)
+        return True
+    except Exception:
+        # 出现异常时返回 False
+        return False
